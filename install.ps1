@@ -5,10 +5,21 @@ Write-Host "nasmarr win-dots installer" -ForegroundColor Cyan
 Write-Host ""
 
 $userPath = "$env:USERPROFILE"
+$repoPath = $PSScriptRoot
 
 # Install GlazeWM
 Write-Host "Installing GlazeWM..." -ForegroundColor Green
 winget install --id=glzr-io.glazewm -e --accept-source-agreements --accept-package-agreements
+
+# Add GlazeWM to startup
+$startupPath = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
+$glazewmPath = "C:\Program Files\GlazeWM\glazewm.exe"  # Adjust if needed
+$shortcutPath = "$startupPath\GlazeWM.lnk"
+
+$WScriptShell = New-Object -ComObject WScript.Shell
+$Shortcut = $WScriptShell.CreateShortcut($shortcutPath)
+$Shortcut.TargetPath = $glazewmPath
+$Shortcut.Save()
 
 # TODO: Install VSCode
 
