@@ -18,15 +18,6 @@ winget install --id=glzr-io.glazewm -e --accept-source-agreements --accept-packa
 
 # TODO: Install Discord
 
-# Clone repo
-$repoPath = "$userPath\win-dots"
-if (Test-Path $repoPath) {
-    Write-Host "win-dots already exists at $repoPath" -ForegroundColor Yellow
-} else {
-    Write-Host "Cloning win-dots..." -ForegroundColor Green
-    git clone https://github.com/nasmarr/win-dots.git $repoPath
-}
-
 # Create symlinks
 Write-Host ""
 Write-Host "Creating symlinks..." -ForegroundColor Green
