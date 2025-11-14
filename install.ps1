@@ -7,6 +7,7 @@ Write-Host ""
 $userPath = "$env:USERPROFILE"
 $repoPath = $PSScriptRoot
 
+# TODO: Install NerdFont CaskaydiaMono Nerd Font
 # Install GlazeWM
 Write-Host "Installing GlazeWM..." -ForegroundColor Green
 winget install --id=glzr-io.glazewm -e --accept-source-agreements --accept-package-agreements
