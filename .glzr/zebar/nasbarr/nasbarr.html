@@ -33,6 +33,7 @@
         battery: { type: 'battery' },
         memory: { type: 'memory' },
         weather: { type: 'weather' },
+        media: { type: 'media' },
       });
 
       createRoot(document.getElementById('root')).render(<App />);
@@ -143,6 +144,19 @@
             <div className="center">{output.date?.formatted}</div>
 
             <div className="right">
+              <div className="media">
+                <button 
+                  className="media-button"
+                  onClick={() => output.media?.togglePlayPause()}
+                >
+                  󰐎 
+                </button>
+                <div className="marquee">
+                  <p>
+                    {output.media?.currentSession?.title} - {output.media?.currentSession?.artist}
+                  </p>
+                </div>
+              </div>
               {output.glazewm && (
                 <>
                   {output.glazewm.isPaused && (

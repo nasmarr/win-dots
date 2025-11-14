@@ -11,7 +11,7 @@ i {
 
 body {
   color: rgb(255 255 255 / 90%);
-  font-family: ui-monospace, monospace;
+  font-family: 'CaskaydiaMono Nerd Font';
   font-size: 12px;
   overflow: hidden;
 }
@@ -36,10 +36,11 @@ body,
 
 .app {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr auto minmax(0,1fr);
   align-items: center;
   height: 100%;
   padding: 4px 1.5vw;
+  gap: 10px;
 }
 
 .left,
@@ -55,6 +56,12 @@ body,
 
 .right {
   justify-self: end;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow: hidden;
 }
 
 .logo,
@@ -83,13 +90,43 @@ body,
   cursor: pointer;
 
   &.displayed {
-    background: rgb(255 255 255 / 15%);
+    background: rgba(59 77 101 / 50%);
   }
 
   &.focused,
   &:hover {
-    background: rgb(75 115 255 / 50%);
+    background: rgba(59 77 101 / 50%);
   }
+}
+
+.media {
+  border: 4px solid rgba(59 77 101 / 95%);
+  margin-right: 12px;
+  min-width: 0;
+  flex-shrink: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: rgba(59 77 101 / 60%);
+  border-radius: 999em;
+}
+
+.media-button {
+  margin-right: 4px;
+  margin-left: 4px;
+  background: transparent;
+  color: rgb(255 255 255 / 90%);
+  border: none;
+}
+
+.marquee {
+  overflow: hidden;
+  max-width: 250px;
+  white-space: nowrap;
+}
+
+.marquee p {
+  animation: scroll-left 15s linear infinite;
 }
 
 .binding-mode,
@@ -121,4 +158,14 @@ body,
   font-size: 7px;
   left: -8px;
   top: 3px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
 }
