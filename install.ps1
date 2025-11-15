@@ -1,13 +1,42 @@
 # Simple install script for win-dots
 # Run with: powershell -ExecutionPolicy Bypass -File install.ps1
 
+# Check if running as administrator
+$isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+if (-not $isAdmin) {
+    Write-Host "Error: This script must be run as Administrator" -ForegroundColor Red
+    Write-Host "Right-click PowerShell and select 'Run as Administrator', then run the script again." -ForegroundColor Yellow
+    exit 1
+}
+
 Write-Host "nasmarr win-dots installer" -ForegroundColor Cyan
 Write-Host ""
 
 $userPath = "$env:USERPROFILE"
 $repoPath = $PSScriptRoot
 
-# TODO: Install NerdFont CaskaydiaMono Nerd Font
+# Install CaskaydiaMono Nerd Font
+Write-Host "Installing CaskaydiaMono Nerd Font..." -ForegroundColor Green
+$fontUrl = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CascadiaMono.zip"
+$tempPath = "$env:TEMP\CascadiaMono.zip"
+$extractPath = "$env:TEMP\CascadiaMono"
+
+# Download font
+Invoke-WebRequest -Uri $fontUrl -OutFile $tempPath
+Expand-Archive -Path $tempPath -DestinationPath $extractPath -Force
+
+# Install fonts
+$fontsFolder = (New-Object -ComObject Shell.Application).Namespace(0x14)
+Get-ChildItem -Path $extractPath -Filter "*.ttf" | ForEach-Object {
+    $fontsFolder.CopyHere($_.FullName)
+}
+
+# Cleanup
+Remove-Item -Path $tempPath -Force
+Remove-Item -Path $extractPath -Recurse -Force
+
+# TODO: Terminal settings
+
 # Install GlazeWM
 Write-Host "Installing GlazeWM..." -ForegroundColor Green
 winget install --id=glzr-io.glazewm -e --accept-source-agreements --accept-package-agreements
@@ -22,13 +51,41 @@ $Shortcut = $WScriptShell.CreateShortcut($shortcutPath)
 $Shortcut.TargetPath = $glazewmPath
 $Shortcut.Save()
 
-# TODO: Install VSCode
+# Install 7zip
+Write-Host "Installing 7zip..." -ForegroundColor Green
+winget install --id=7zip.7zip -e --accept-source-agreements --accept-package-agreements
 
-# TODO: Install Brave Browser
+# Install VSCode
+Write-Host "Installing Visual Studio Code..." -ForegroundColor Green
+winget install --id=Microsoft.VisualStudioCode -e --accept-source-agreements --accept-package-agreements
 
-# TODO: Install Steam
+# TODO: vscode settings, keybindings and extensions
 
-# TODO: Install Discord
+# Install Brave Browser
+Write-Host "Installing Brave Browser ..." -ForegroundColor Green
+winget install --id=Brave.Brave -e --accept-source-agreements --accept-package-agreements
+
+# TODO: If possible, import browser settings, extensions, and bookmarks
+
+# Install iMazing
+Write-Host "Installing iMazing..." -ForegroundColor Green
+winget install --id=DigiDNA.iMazing -e --accept-source-agreements --accept-package-agreements
+
+# Install UGGREEN NAS
+Write-Host "Installing UGREEN NAS..." -ForegroundColor Green
+winget install --id=UGREEN.UGREENNAS -e --accept-source-agreements --accept-package-agreements
+
+# Install Steam
+Write-Host "Installing Steam..." -ForegroundColor Green
+winget install --id=Valve.Steam -e --accept-source-agreements --accept-package-agreements
+
+# Install Discord
+Write-Host "Installing Discord..." -ForegroundColor Green
+winget install --id=Discord.Discord -e --accept-source-agreements --accept-package-agreements
+
+# Install League Of Legends
+Write-Host "Installing League Of Legends..." -ForegroundColor Green
+winget install --id=RiotGames.LeagueOfLegends.NA -e --accept-source-agreements --accept-package-agreements
 
 # Create symlinks
 Write-Host ""
