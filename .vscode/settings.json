@@ -1,0 +1,21 @@
+{
+    // UI Settings
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "glassit.alpha": 220,
+    "window.titleBarStyle": "custom",
+    // Editor settings
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.fontWeight": "normal",
+    "editor.lineNumbers": "relative",
+    "editor.fontFamily": "CaskaydiaMono Nerd Font",
+    "terminal.integrated.fontFamily": "monospace",
+    // Vim settings
+    "vim.highlightedyank.duration": 200,
+    "vim.highlightedyank.color": "rgba(250, 240, 170, 0.5)",
+    "vim.useCtrlKeys": true,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.ignorecase": true,
+    "vim.incsearch": true,
+    "vim.smartRelativeLine": true,
+}
