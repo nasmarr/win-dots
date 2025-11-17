@@ -1,0 +1,4 @@
+catppuccin.catppuccin-vsc
+esbenp.prettier-vscode
+s-nlf-fh.glassit
+vscodevim.vim

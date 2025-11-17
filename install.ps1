@@ -60,6 +60,9 @@ Write-Host "Installing Visual Studio Code..." -ForegroundColor Green
 winget install --id=Microsoft.VisualStudioCode -e --accept-source-agreements --accept-package-agreements
 
 # TODO: vscode settings, keybindings and extensions
+# Install VSCode extensions
+Write-Host "Installing Visual Studio Code extensions" -ForegroundColor Green
+Get-Content "$repoPath\.vscode\extensions.txt" | ForEach-Object { code -install-extension $_ }
 
 # Install Brave Browser
 Write-Host "Installing Brave Browser ..." -ForegroundColor Green
@@ -102,6 +105,14 @@ if (Test-Path $glzrPath) {
     Remove-Item -Path $glzrPath -Recurse -Force
 }
 New-Item -ItemType SymbolicLink -Path $glzrPath -Target "$repoPath\.glzr" -Force
+
+# Symlink VSCode settings.json
+$vsCodePath = "$env:APPDATA\Code\User\settings.json."
+if (Test-Path $vsCodePath) {
+    Write-Host "Removing existing VSCode .settings file..." -ForegroundColor Yellow
+    Remove-Item -Path $vsCodePath -Recurse -Force
+}
+New-Item -ItemType SymbolicLink -Path $vsCodePath -Target "$repoPath\.vscode\settings.json" -Force
 
 Write-Host ""
 Write-Host "Done!" -ForegroundColor Green
