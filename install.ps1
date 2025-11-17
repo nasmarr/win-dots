@@ -35,7 +35,12 @@ Get-ChildItem -Path $extractPath -Filter "*.ttf" | ForEach-Object {
 Remove-Item -Path $tempPath -Force
 Remove-Item -Path $extractPath -Recurse -Force
 
-# TODO: Terminal settings
+# TODO: Create custom OhMyPosh theme based on Catppuccin
+
+# Install OhMyPosh
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Write-Host "Installing OhMyPosh..." -ForegroundColor Green
+winget install JanDeDobbeleer.OhMyPosh --source winget
 
 # Install GlazeWM
 Write-Host "Installing GlazeWM..." -ForegroundColor Green
@@ -43,7 +48,7 @@ winget install --id=glzr-io.glazewm -e --accept-source-agreements --accept-packa
 
 # Add GlazeWM to startup
 $startupPath = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup"
-$glazewmPath = "C:\Program Files\GlazeWM\glazewm.exe"  # Adjust if needed
+$glazewmPath = "C:\Program Files\GlazeWM\glazewm.exe"
 $shortcutPath = "$startupPath\GlazeWM.lnk"
 
 $WScriptShell = New-Object -ComObject WScript.Shell
@@ -113,6 +118,13 @@ if (Test-Path $vsCodePath) {
     Remove-Item -Path $vsCodePath -Recurse -Force
 }
 New-Item -ItemType SymbolicLink -Path $vsCodePath -Target "$repoPath\.vscode\settings.json" -Force
+
+# Symlink PowerShell Profile
+if (Test-Path $PROFILE) {
+    Write-Host "Removing existing powershell profile..." -ForegroundColor Yellow
+    Remove-Item -Path $PROFILE -Recurse -Force
+}
+New-Item -ItemType SymbolicLink -Path $PROFILE -Target "$repoPath\.terminal\Microsoft.PowerShell_profile.ps1" -Force
 
 Write-Host ""
 Write-Host "Done!" -ForegroundColor Green
