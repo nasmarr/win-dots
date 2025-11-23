@@ -4,6 +4,7 @@ It should contain a few config files and an install script to do the magic of in
 
 To run the install script, execute the following commands in a powershell terminal with admin priveleges:
 ~~~
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 cd $env:USERPROFILE
 git clone https://github.com/nasmarr/win-dots.git
 cd win-dots

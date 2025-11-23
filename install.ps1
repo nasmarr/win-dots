@@ -14,6 +14,21 @@ Write-Host ""
 
 $userPath = "$env:USERPROFILE"
 $repoPath = $PSScriptRoot
+$gitEmail = ""
+$gitUsername = ""
+
+# Prompt for GitHub SSH setup
+Write-Host "Do you want to set up GitHub SSH? (y/n)" -ForegroundColor Cyan
+$setupSSH = Read-Host
+$gitEmail = ""
+$gitUsername = ""
+
+if ($setupSSH -eq "y") {
+    $gitEmail = Read-Host "Enter your GitHub email"
+    $gitUsername = Read-Host "Enter your GitHub username"
+}
+Write-Host ""
+
 
 # Install CaskaydiaMono Nerd Font
 Write-Host "Installing CaskaydiaMono Nerd Font..." -ForegroundColor Green
@@ -37,8 +52,11 @@ Remove-Item -Path $extractPath -Recurse -Force
 
 # TODO: Create custom OhMyPosh theme based on Catppuccin
 
+#####################
+# APP INSTALLATIONS #
+#####################
+
 # Install OhMyPosh
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Write-Host "Installing OhMyPosh..." -ForegroundColor Green
 winget install JanDeDobbeleer.OhMyPosh --source winget
 
@@ -95,7 +113,10 @@ winget install --id=Discord.Discord -e --accept-source-agreements --accept-packa
 Write-Host "Installing League Of Legends..." -ForegroundColor Green
 winget install --id=RiotGames.LeagueOfLegends.NA -e --accept-source-agreements --accept-package-agreements
 
-# Create symlinks
+###################
+# SYMLINK SECTION #
+###################
+
 Write-Host ""
 Write-Host "Creating symlinks..." -ForegroundColor Green
 
@@ -119,6 +140,14 @@ if (Test-Path $vsCodePath) {
 }
 New-Item -ItemType SymbolicLink -Path $vsCodePath -Target "$repoPath\.vscode\settings.json" -Force
 
+# Symlink Terminal settings
+$terminalSettingsPath = "$userPath\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+if (Test-Path $PROFILE) {
+    Write-Host "Removing existing terminal settings..." -ForegroundColor Yellow
+    Remove-Item -Path $terminalSettingsPath -Force
+}
+New-Item -ItemType SymbolicLink -Path $terminalSettingsPath -Target "$repoPath\.terminal\settings.json" -Force
+
 # Symlink PowerShell Profile
 if (Test-Path $PROFILE) {
     Write-Host "Removing existing powershell profile..." -ForegroundColor Yellow
@@ -136,7 +165,30 @@ if (Test-Path $bravePath) {
 New-Item -ItemType SymbolicLink -Path "$bravePath\Bookmarks" -Target "$repoPath\.brave\Bookmarks" -Force
 New-Item -ItemType SymbolicLink -Path "$bravePath\Preferences" -Target "$repoPath\.brave\Preferences" -Force
 
-# TODO: Clone nasmarr wallpapers?
+# TODO: Clone nasmarr wallpaper
+###############
+# OTHER STUFF #
+###############
+
+if ($setupSSH -eq "y") {
+    Write-Host "Setting up GitHub SSH..." -ForegroundColor Green
+    
+    # Generate SSH key
+    ssh-keygen -t ed25519 -C "$gitEmail" -f "$env:USERPROFILE\.ssh\id_ed25519" -N ""
+    
+    # Configure git
+    git config --global user.email "$gitEmail"
+    git config --global user.name "$gitUsername"
+    
+    # Start ssh-agent and add key
+    Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+    Start-Service ssh-agents
+
+    ssh-add "$env:USERPROFILE\.ssh\id_ed25519"
+    
+    Write-Host "SSH public key (add this to GitHub):" -ForegroundColor Yellow
+    Get-Content "$env:USERPROFILE\.ssh\id_ed25519.pub"
+}
 
 Write-Host ""
 Write-Host "Done!" -ForegroundColor Green
