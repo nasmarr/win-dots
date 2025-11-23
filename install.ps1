@@ -101,6 +101,10 @@ winget install --id=DigiDNA.iMazing -e --accept-source-agreements --accept-packa
 Write-Host "Installing UGREEN NAS..." -ForegroundColor Green
 winget install --id=UGREEN.UGREENNAS -e --accept-source-agreements --accept-package-agreements
 
+# Install GOG Galaxy
+Write-Host "Installing GOG Galaxy..." -ForegroundColor Green
+winget install --id=GOG.Galaxy -e --accept-source-agreements --accept-package-agreements
+
 # Install Steam
 Write-Host "Installing Steam..." -ForegroundColor Green
 winget install --id=Valve.Steam -e --accept-source-agreements --accept-package-agreements
