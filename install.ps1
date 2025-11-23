@@ -64,7 +64,9 @@ winget install --id=7zip.7zip -e --accept-source-agreements --accept-package-agr
 Write-Host "Installing Visual Studio Code..." -ForegroundColor Green
 winget install --id=Microsoft.VisualStudioCode -e --accept-source-agreements --accept-package-agreements
 
-# TODO: vscode settings, keybindings and extensions
+# Refresh PATH
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+
 # Install VSCode extensions
 Write-Host "Installing Visual Studio Code extensions" -ForegroundColor Green
 Get-Content "$repoPath\.vscode\extensions.txt" | ForEach-Object { code -install-extension $_ }
@@ -72,8 +74,6 @@ Get-Content "$repoPath\.vscode\extensions.txt" | ForEach-Object { code -install-
 # Install Brave Browser
 Write-Host "Installing Brave Browser ..." -ForegroundColor Green
 winget install --id=Brave.Brave -e --accept-source-agreements --accept-package-agreements
-
-# TODO: If possible, import browser settings, extensions, and bookmarks
 
 # Install iMazing
 Write-Host "Installing iMazing..." -ForegroundColor Green
@@ -125,6 +125,18 @@ if (Test-Path $PROFILE) {
     Remove-Item -Path $PROFILE -Recurse -Force
 }
 New-Item -ItemType SymbolicLink -Path $PROFILE -Target "$repoPath\.terminal\Microsoft.PowerShell_profile.ps1" -Force
+
+# Symlink Brave Browser Bookmarks and Preferences 
+$bravePath = "$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data\Default"
+if (Test-Path $bravePath) {
+    Write-Host "Removing existing Brave Bookmarks and Preferences..." -ForegroundColor Yellow
+    Remove-Item -Path "$bravePath\Bookmarks" -Force
+    Remove-Item -Path "$bravePath\Preferences" -Force
+}
+New-Item -ItemType SymbolicLink -Path "$bravePath\Bookmarks" -Target "$repoPath\.brave\Bookmarks" -Force
+New-Item -ItemType SymbolicLink -Path "$bravePath\Preferences" -Target "$repoPath\.brave\Preferences" -Force
+
+# TODO: Clone nasmarr wallpapers?
 
 Write-Host ""
 Write-Host "Done!" -ForegroundColor Green

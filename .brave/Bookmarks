@@ -1,0 +1,174 @@
+{
+   "checksum": "70394ac69fdb28fa94029cdde13eaa04",
+   "checksum_sha256": "4632321b82ec5f1ddd124c97b8b3c30548ac0a7b8f2053d19b681c9b2a756948",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13393282964860746",
+            "date_last_used": "13393284542891227",
+            "guid": "3646eb27-498f-40c9-91da-8d16da6879de",
+            "id": "2",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "UGREEN NAS",
+            "type": "url",
+            "url": "http://192.168.50.98:9999/desktop/?os=ugospro#/login/account"
+         }, {
+            "date_added": "13394661745623192",
+            "date_last_used": "13405491008271669",
+            "guid": "b4f392bb-f05b-497b-a614-5551fc87a535",
+            "id": "3",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Wallhaven",
+            "type": "url",
+            "url": "https://wallhaven.cc/latest"
+         }, {
+            "children": [ {
+               "date_added": "13401168020485085",
+               "date_last_used": "0",
+               "guid": "c939cd50-a3e2-4957-8429-bbf53260826a",
+               "id": "5",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "OPE2 ranger guide",
+               "type": "url",
+               "url": "https://mobalytics.gg/poe-2/builds/fubgun-0-3-league-starter-live"
+            }, {
+               "date_added": "13401168181992760",
+               "date_last_used": "13402973837338414",
+               "guid": "4e4b4c5d-b0af-484e-8b46-5daeb4ac7647",
+               "id": "6",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "POE2 Ranger",
+               "type": "url",
+               "url": "https://mobalytics.gg/poe-2/builds/fubgun-deadeye-leveling"
+            }, {
+               "date_added": "13401170851743205",
+               "date_last_used": "0",
+               "guid": "00a5b9bf-14cd-4e4c-9b6e-f39c326070d4",
+               "id": "7",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "PoE Leveling Ranger",
+               "type": "url",
+               "url": "https://mobalytics.gg/poe-2/builds/fubgun-deadeye-leveling?ws-ngf5-f7d82102-7e77-4a44-ad24-33b67e8ae7bf=activeVariantId%2C508143fc-e77f-46c8-9c60-896cabfa68a1"
+            }, {
+               "date_added": "13401079227558546",
+               "date_last_used": "0",
+               "guid": "9b26a464-ab5d-4796-858b-28e40c60b7ca",
+               "id": "8",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "The Spear Huntress Leveling Guide - Path of Exile 2",
+               "type": "url",
+               "url": "https://maxroll.gg/poe2/build-guides/spear-huntress-leveling-guide#amazon-passives-header"
+            } ],
+            "date_added": "13401168072863891",
+            "date_last_used": "0",
+            "date_modified": "13402973843267601",
+            "guid": "612f1b1a-8327-4ad1-b150-477b91b1a959",
+            "id": "4",
+            "name": "Gaming",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13402973775943721",
+               "date_last_used": "0",
+               "guid": "58377abd-b3eb-4a5f-a802-4beb0a9536d4",
+               "id": "10",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Preconfigured setups – Hyprland Wiki",
+               "type": "url",
+               "url": "https://wiki.hypr.land/Getting-Started/Preconfigured-setups/"
+            }, {
+               "date_added": "13402973782919447",
+               "date_last_used": "0",
+               "guid": "ac41ca21-ca2b-4627-9448-120760b6e2c5",
+               "id": "11",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "General recommendations - ArchWiki",
+               "type": "url",
+               "url": "https://wiki.archlinux.org/title/General_recommendations#Booting"
+            } ],
+            "date_added": "13402973773898539",
+            "date_last_used": "0",
+            "date_modified": "13402973782919447",
+            "guid": "4e6c254f-f45a-4909-ae4b-078679c94c1e",
+            "id": "9",
+            "name": "Arch",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13402973812608273",
+               "date_last_used": "0",
+               "guid": "2561d1bc-b0a1-4da7-a9bb-727002bc3e25",
+               "id": "13",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Angular CLI • Overview • Angular",
+               "type": "url",
+               "url": "https://angular.dev/tools/cli"
+            }, {
+               "date_added": "13402973823749013",
+               "date_last_used": "0",
+               "guid": "bd28133b-fc3f-4bbf-ae77-974ff66b6ac8",
+               "id": "14",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Datepicker | Angular Material",
+               "type": "url",
+               "url": "https://material.angular.dev/components/datepicker/overview"
+            } ],
+            "date_added": "13402973793471018",
+            "date_last_used": "0",
+            "date_modified": "13402979961889115",
+            "guid": "aac1dfa6-d472-4223-9e06-dd7e563d10e7",
+            "id": "12",
+            "name": "Budget App",
+            "type": "folder"
+         } ],
+         "date_added": "13393282897065463",
+         "date_last_used": "0",
+         "date_modified": "13402973823749013",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13393282897065468",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "15",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13393282897065471",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "16",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}
