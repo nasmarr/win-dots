@@ -68,10 +68,10 @@
                 "guid": "{259a82f0-6ea3-4254-abbd-025e2f915166}",
                 "hidden": false,
                 "historySize": 9001,
-                "icon": "C:\\Users\\Nathan\\win-dots\\.terminal\\ohMyPosh-logo.png",
+                "icon": "%USERPROFILE%\\win-dots\\.terminal\\ohMyPosh-logo.png",
                 "name": "OhMyPosh",
                 "opacity": 90,
-                "startingDirectory": "USERPROFILE"
+                "startingDirectory": "%USERPROFILE%"
             }
         ]
     },
