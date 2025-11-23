@@ -165,7 +165,6 @@ if (Test-Path $bravePath) {
 New-Item -ItemType SymbolicLink -Path "$bravePath\Bookmarks" -Target "$repoPath\.brave\Bookmarks" -Force
 New-Item -ItemType SymbolicLink -Path "$bravePath\Preferences" -Target "$repoPath\.brave\Preferences" -Force
 
-# TODO: Clone nasmarr wallpaper
 ###############
 # OTHER STUFF #
 ###############
