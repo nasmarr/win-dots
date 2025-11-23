@@ -69,7 +69,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";"
 
 # Install VSCode extensions
 Write-Host "Installing Visual Studio Code extensions" -ForegroundColor Green
-Get-Content "$repoPath\.vscode\extensions.txt" | ForEach-Object { code -install-extension $_ }
+Get-Content "$repoPath\.vscode\extensions.txt" | ForEach-Object { code --install-extension $_ }
 
 # Install Brave Browser
 Write-Host "Installing Brave Browser ..." -ForegroundColor Green
