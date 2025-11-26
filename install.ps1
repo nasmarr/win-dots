@@ -82,6 +82,9 @@ winget install --id=7zip.7zip -e --accept-source-agreements --accept-package-agr
 Write-Host "Installing Visual Studio Code..." -ForegroundColor Green
 winget install --id=Microsoft.VisualStudioCode -e --accept-source-agreements --accept-package-agreements
 
+# Add environment variable for Claude Code CLI
+[Environment]::SetEnvironmentVariable("Path", [Environment]::GetEnvironmentVariable("Path", "User") + ";$env:USERPROFILE\.local\bin", "User")
+
 # Refresh PATH
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 
@@ -116,6 +119,11 @@ winget install --id=Discord.Discord -e --accept-source-agreements --accept-packa
 # Install League Of Legends
 Write-Host "Installing League Of Legends..." -ForegroundColor Green
 winget install --id=RiotGames.LeagueOfLegends.NA -e --accept-source-agreements --accept-package-agreements
+
+# Install Claude CLI
+Write-Host "Installing Claude Code CLI..." -ForegroundColor Green
+Invoke-RestMethod https://claude.ai/install.ps1 | Invoke-Expression
+
 
 ###################
 # SYMLINK SECTION #
