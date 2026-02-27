@@ -167,6 +167,7 @@ if (Test-Path $PROFILE) {
 }
 New-Item -ItemType SymbolicLink -Path $PROFILE -Target "$repoPath\.terminal\Microsoft.PowerShell_profile.ps1" -Force
 
+# TODO: Brave is unable to save changes to the Bookmarks file at the default location when it is a symlink. 
 # Symlink Brave Browser Bookmarks and Preferences 
 $bravePath = "$env:LOCALAPPDATA\BraveSoftware\Brave-Browser\User Data\Default"
 if (Test-Path $bravePath) {
